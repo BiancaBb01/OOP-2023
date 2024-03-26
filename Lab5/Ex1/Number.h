@@ -1,30 +1,41 @@
-#pragma once
-#include <string>
-#include <iostream>
-using namespace std;
-class Number
-{
-	char* value;
-	int base;
+#ifndef Number_h
+#define Number_h
+
+class Number {
+private:
+    char* value;
+    int base;
+    int digitsCount;
+
 public:
+    Number(const char* value, int base);
+    Number(int value);
+    Number(const Number& other); // copy constructor
+    Number(Number&& other) noexcept; // move constructor
+    ~Number();
 
-	Number(const char* newValue, int newBase); // where base is between 2 and 16
-	Number(const Number& n);
-	Number(int);
-	~Number();
+    Number& operator=(const Number& other); // copy assignment operator
+    Number& operator=(Number&& other) noexcept; // move assignment operator
 
-	void operator=(const Number& n1);
-	void operator=(const char* newValue);
-	void operator-();
-	char& operator[](int index);
-	friend Number operator+(const Number& n1, const Number& n2);
-	friend Number operator-(const Number& n1, const Number& n2);
-	friend Number operator+=(Number& n1, const Number& n2);
-	Number operator|(const Number& n);
-	bool operator>(const Number& n1);
+    friend Number operator+(const Number& lhs, const Number& rhs);
+    friend Number operator-(const Number& lhs, const Number& rhs);
 
-	void SwitchBase(int newBase);
-	void Print();
-	int  GetDigitsCount(); // returns the number of digits for the current number
-	int  GetBase(); // returns the current base
+    char& operator[](int index);
+
+    bool operator>(const Number& other) const;
+    bool operator<(const Number& other) const;
+    bool operator>=(const Number& other) const;
+    bool operator<=(const Number& other) const;
+    bool operator==(const Number& other) const;
+    bool operator!=(const Number& other) const;
+
+    void SwitchBase(int newBase);
+    void Print() const;
+    int GetDigitsCount() const;
+    int GetBase() const;
+
+    Number& operator--(); // prefix decrement
+    Number operator--(int); // postfix decrement
 };
+
+#endif
