@@ -1,12 +1,9 @@
 #pragma once
-#ifndef VOLVO_H
-#define VOLVO_H
-
 #include "Car.h"
-
-class Volvo : public Car {
+class Volvo : public Car
+{
 public:
-    double calculateTime(int length, Weather weather) const override;
+	Volvo();
+	float Racing(bool& ok, int, int) override;
+	char* getName() override;
 };
-
-#endif
