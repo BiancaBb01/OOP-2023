@@ -1,12 +1,9 @@
 #pragma once
-#ifndef RANGEROVER_H
-#define RANGEROVER_H
-
 #include "Car.h"
-
-class RangeRover : public Car {
+class RangeRover: public Car
+{
 public:
-    double calculateTime(int length, Weather weather) const override;
+	RangeRover();
+	float Racing(bool& ok, int, int) override;
+	char* getName() override;
 };
-
-#endif
