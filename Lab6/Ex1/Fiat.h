@@ -1,12 +1,9 @@
 #pragma once
-#ifndef FIAT_H
-#define FIAT_H
-
 #include "Car.h"
-
-class Fiat : public Car {
+class Fiat : public Car
+{
 public:
-    double calculateTime(int length, Weather weather) const override;
+	Fiat();
+	float Racing(bool& ok, int, int) override;
+	char* getName() override;
 };
-
-#endif 
