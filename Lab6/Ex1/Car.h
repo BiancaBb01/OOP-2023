@@ -1,12 +1,15 @@
 #pragma once
-#ifndef CAR_H
-#define CAR_H
-
 #include "Weather.h"
 
-class Car {
+class Car
+{
+protected:
+	int fuelCapacity;
+	int fuelConsumption;
+	int  averageSpeed[3];
+	char* name;
 public:
-    virtual double calculateTime(int length, Weather weather) const = 0;
+	enum Weather;
+	virtual char* getName() = 0;
+	virtual float Racing(bool&, int, int) = 0;
 };
-
-#endif
