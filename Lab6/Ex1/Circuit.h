@@ -1,23 +1,37 @@
 #pragma once
-#ifndef CIRCUIT_H
-#define CIRCUIT_H
-
-#include <vector>
 #include "Car.h"
+#include "Seat.h"
+#include "Volvo.h"
+#include "BMW.h"
+#include "Fiat.h"
+#include "RangeRover.h"
+#include <string.h>
+using namespace std;
 
-class Circuit {
-public:
-    void SetLength(int length);
-    void SetWeather(Weather weather);
-    void AddCar(Car* car);
-    void Race();
-    void ShowFinalRanks();
-    void ShowWhoDidNotFinish();
 
+class Circuit
+{
 private:
-    int length;
-    Weather weather;
-    std::vector<Car*> cars;
-};
+	int length;
+	Car* car[5];
+	float timeToFinish[5];
+	bool finished[5];
+	int nrOfCars;
+	int weather;
 
-#endif
+public:
+
+	Circuit();
+
+	void SetLength(int);
+
+	void SetWeather(int);
+
+	void AddCar(Car* c);
+
+	void Race();
+
+	void ShowFinalRanks();
+
+	void ShowWhoDidNotFinish(); // it is possible that some cars don't have enough fuel to finish the circuit
+};
